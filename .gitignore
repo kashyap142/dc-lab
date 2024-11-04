@@ -1,0 +1,18 @@
+# exe files
+*.exe
+
+# editor
+.vscode
+.DS_Store
+
+# java, cpp
+*.cc
+*.cpp
+*.java
+*.class
+
+# local dir
+test/
+
+# txt, input, output
+*.txt
