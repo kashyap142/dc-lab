@@ -51,7 +51,7 @@ int main()
         }
     }
 
-    end = omp_get_witme();
+    end = omp_get_wtime();
 
     printf("Sequential execution, time: %lf\n", (end - start));
 
