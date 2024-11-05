@@ -52,19 +52,25 @@ void mergeSortSequential(int arr[], int left, int right)
 }
 
 // parallel
-void mergeSortParallel(int arr[], int left, int right)
+void mergeSortParallel(int arr[], int left, int right, int depth)
 {
     int mid;
     if(left < right) {
         mid = (left + right) / 2;
 
-        #pragma omp parallel sections
-        {
-            #pragma omp section
-            mergeSortParallel(arr, left, mid);
+        if(depth <= 4) {
+            #pragma omp parallel sections
+            {
+                #pragma omp section
+                mergeSortParallel(arr, left, mid, depth + 1);
 
-            #pragma omp section
-            mergeSortParallel(arr, mid + 1, right);
+                #pragma omp section
+                mergeSortParallel(arr, mid + 1, right, depth + 1);
+            }
+        }
+        else {
+            mergeSortSequential(arr, left, mid);
+            mergeSortSequential(arr, mid + 1, right);
         }
         merge(arr, left, mid, right);
     }
@@ -97,7 +103,7 @@ int main()
     #pragma omp parallel
     {
         #pragma omp single
-        mergeSortParallel(copy_arr, 0, n - 1);
+        mergeSortParallel(copy_arr, 0, n - 1, 0);
     }
 
     end = omp_get_wtime();
