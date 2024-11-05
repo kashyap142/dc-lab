@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <omp.h>
-#include <time.h>
+#include <stdlib.h>
 
 void merge(int arr[], int left, int mid, int right)
 {
@@ -35,8 +35,6 @@ void merge(int arr[], int left, int mid, int right)
     for(i = 0; i < size; i++) {
         arr[left + i] = temp[i];
     }
-
-    free(temp);
 }
 
 // sequential
@@ -104,7 +102,7 @@ int main()
 
     end = omp_get_wtime();
 
-    printf("Parallel execution, time: %lf", (end - start));
+    printf("Parallel execution, time: %lf\n", (end - start));
 
     return 0;
 }
