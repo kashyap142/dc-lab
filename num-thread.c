@@ -4,19 +4,19 @@
 
 int main()
 {
-    int n, i, t, itmes[8];
+    int n, i, t, items[8];
 
     printf("Enter number of items: ");
     scanf("%d", &n);
 
     for(i = 0; i < 8; i++) {
-        itmes[i] = rand() % 1000;
+        items[i] = rand() % 1000;
     }
 
     #pragma omp parallel for schedule(static, 3)
     for(i = 0; i < n; i++) {
         t = omp_get_thread_num();
-        printf("Thread %d, item: %d, value %d\n", t, i, itmes[t]);
+        printf("Thread %d, item: %d, value %d\n", t, i, items[t]);
     }
 
     return 0;
