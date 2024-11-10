@@ -11,14 +11,14 @@ This repository contains programs for the **Distributed Computing** integrated l
 To compile and run programs:
 
 ```bash
-g++ file-name.c -fopenmp
+g++ <FILE-NAME.c> -fopenmp
 ./a.out
 ```
 
 **Note**: If the file includes `math.h`, add the `-lm` flag:
 
 ```bash
-g++ file-name.c -fopenmp -lm
+g++ <FILE-NAME.c> -fopenmp -lm
 ./a.out
 ```
 
