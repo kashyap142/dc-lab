@@ -8,7 +8,7 @@ This repository contains programs for the **Distributed Computing** integrated l
 
 ### Compilation and Execution
 
-To compile and run programs:
+To compile and run programs with `omp.h` library:
 
 ```bash
 g++ <FILE-NAME.c> -fopenmp
@@ -20,6 +20,13 @@ g++ <FILE-NAME.c> -fopenmp
 ```bash
 g++ <FILE-NAME.c> -fopenmp -lm
 ./a.out
+```
+
+To compile and run program with `mpi.h` library:
+
+```bash
+mpicc <FILENAME.C>
+mpirun -np 5 ./a.out
 ```
 
 ### Useful Resources
